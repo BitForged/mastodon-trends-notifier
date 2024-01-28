@@ -1,0 +1,18 @@
+{
+  "PluginName": "mastodontrendsnotify",
+  "PluginDisplayName": "Mastodon Trends Notifier",
+  "MainClass": "social.bitforged.tools.Plugin",
+  "Description": "A plugin for BitForged that notifies you of trends on Mastodon",
+  "Version Code": 1.0,
+  "Version": "v1-alpha",
+  "Authors": [
+    "Russell Richardson <russjr08>"
+  ],
+  "libraries": [
+    "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.22",
+    "com.squareup.retrofit2:retrofit:2.9.0",
+    "com.squareup.retrofit2:converter-jackson:2.9.0",
+    "it.sauronsoftware.cron4j:cron4j:2.2.5",
+    "com.vdurmont:emoji-java:5.1.1"
+  ]
+}

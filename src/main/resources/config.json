@@ -1,0 +1,7 @@
+{
+  "apiBaseUrl": "https://yourinstance.tld (No trailing slash!)",
+  "apiToken": "Generate_From_Mastodon_Development_Area_Grant_Admin_Read_Write",
+  "instanceName": "BitForged Social",
+  "trendNotificationChannelId": "A Discord Channel ID (Numerical)",
+  "cronString": "*/30 * * * *"
+}

@@ -1,0 +1,33 @@
+image: openjdk:17-alpine
+
+stages:
+  - build
+
+before_script:
+  - export GRADLE_USER_HOME=`pwd`/.gradle
+
+cache:
+  paths:
+    - .gradle/wrapper
+    - .gradle/caches
+
+build-with-gradle:
+  tags:
+    - system86
+  stage: build
+  script:
+    - echo "Compiling Mastodon Trends Notifier!"
+    - ./gradlew compileJava
+    - echo "Compilation completed!"
+
+create-artifacts:
+  stage: build
+  tags:
+    - system86
+  dependencies:
+    - build-with-gradle # If the initial build fails, we can skip trying to create artifacts!
+  script:
+    - ./gradlew build
+  artifacts:
+    paths:
+      - build/libs/*.jar
