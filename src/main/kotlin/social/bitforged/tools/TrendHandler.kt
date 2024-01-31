@@ -96,15 +96,16 @@ private fun createUpdatedTrendEmbed(trend: Trend, type: TrendType, status: Trend
         TrendApprovalStatus.APPROVED -> {
             embed.setColor(Color.GREEN)
 
-            if(trend is TrendTag) {
-                embed.addField("Tag Name", trend.name, false)
-            } else if(trend is TrendLink) {
-                embed.addField("Link Title", trend.title, false)
-            }
         }
         TrendApprovalStatus.DENIED -> {
             embed.setColor(Color.RED)
         }
+    }
+
+    if(trend is TrendTag) {
+        embed.addField("Tag Name", trend.name, false)
+    } else if(trend is TrendLink) {
+        embed.addField("Link Title", trend.title, false)
     }
 
     embed.addField(actorTagline, actor, true)
