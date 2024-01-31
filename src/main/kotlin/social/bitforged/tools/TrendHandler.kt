@@ -109,7 +109,7 @@ private fun createUpdatedTrendEmbed(trend: Trend, type: TrendType, status: Trend
     }
 
     embed.addField(actorTagline, actor, true)
-    embed.addField("Status", status.name.toTitleCase())
+    embed.addField("Status", status.name.toTitleCase(), true)
 
     return embed
 }
