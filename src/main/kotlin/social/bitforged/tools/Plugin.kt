@@ -10,6 +10,7 @@ class Plugin: DiscordPlugin() {
 
     init {
         logger.info("Initializing Mastodon Trends Notifier...")
+        logger.info("Found Kotlin Standard Library version at runtime: ${KotlinVersion.CURRENT}")
     }
 
     override fun onEnable(discordApi: DiscordApi?) {

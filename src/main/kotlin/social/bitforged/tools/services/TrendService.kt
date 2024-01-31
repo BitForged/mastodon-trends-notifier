@@ -13,4 +13,10 @@ class TrendService {
 
     fun rejectTag(tagId: String) = trendsApi.rejectTag(tagId)
 
+    fun getTrendingLinks() = trendsApi.getTrendingLinks().execute().body()
+
+    fun approveLink(linkId: String) = trendsApi.approveLink(linkId)
+
+    fun rejectLink(linkId: String) = trendsApi.rejectLink(linkId)
+
 }

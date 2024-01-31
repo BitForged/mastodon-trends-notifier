@@ -16,6 +16,7 @@ dependencies {
     compileOnly("com.squareup.retrofit2:converter-jackson:2.9.0")
     compileOnly("it.sauronsoftware.cron4j:cron4j:2.2.5")
     compileOnly("com.vdurmont:emoji-java:5.1.1")
+    compileOnly("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.5")
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
 }
 
