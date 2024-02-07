@@ -24,7 +24,6 @@ data class TrendLink(
     val image: String,
     @JsonProperty("image_description") val imageDescription: String,
     @JsonProperty("embed_url") val embedUrl: String,
-    @JsonProperty("published_at") val publishedAt: String,
     val history: List<TrendHistory>,
     @JsonProperty("requires_review") override val requiresReview: Boolean,
 ): Trend(id, requiresReview)
