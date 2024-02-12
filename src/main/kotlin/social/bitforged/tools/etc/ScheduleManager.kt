@@ -18,7 +18,12 @@ class ScheduleManager(private val plugin: Plugin) : Loggable {
         manager.schedule(cronString, findPendingTrendsAndNotify())
         manager.start()
         logger.info("Initialized scheduler!")
-        findPendingTrendsAndNotify().run()
+        if(ConfigManager.getInstance().getConfig().runOnStart) {
+            logger.info("Running initial trend check...")
+            findPendingTrendsAndNotify().run()
+        } else {
+            logger.info("Skipping initial trend check, as per configuration")
+        }
     }
 
     private fun findPendingTrendsAndNotify(): Runnable {

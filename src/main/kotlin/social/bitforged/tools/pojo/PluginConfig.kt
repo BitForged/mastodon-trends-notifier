@@ -22,5 +22,10 @@ data class PluginConfig(
      * The cron string to use for scheduling the trend check
      * Checkout https://crontab.guru for help with this
      */
-    val cronString: String
+    val cronString: String,
+
+    /**
+     * Whether to run the trend check on startup (false by default, will run at the next scheduled time)
+     */
+    val runOnStart: Boolean = false
 )
