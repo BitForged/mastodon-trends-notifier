@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy::class)
 data class TrendLink(
     override val id: Int,
-    val url: String,
+    override val url: String,
     val title: String,
     val description: String,
     val language: String,
@@ -26,4 +26,4 @@ data class TrendLink(
     @JsonProperty("embed_url") val embedUrl: String,
     val history: List<TrendHistory>,
     @JsonProperty("requires_review") override val requiresReview: Boolean,
-): Trend(id, requiresReview)
+): Trend(id, url, requiresReview)

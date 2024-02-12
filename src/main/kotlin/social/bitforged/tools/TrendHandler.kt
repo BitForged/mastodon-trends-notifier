@@ -11,7 +11,6 @@ import social.bitforged.tools.pojo.Trend
 import social.bitforged.tools.pojo.TrendLink
 import social.bitforged.tools.pojo.TrendTag
 import social.bitforged.tools.services.TrendService
-import toTitleCase
 import java.awt.Color
 
 fun postTrendToDiscord(trend: Trend, plugin: Plugin) {
@@ -20,7 +19,7 @@ fun postTrendToDiscord(trend: Trend, plugin: Plugin) {
     embed.setColor(Color.YELLOW)
     if(trend is TrendTag) {
         trendType = TrendType.TAG
-        val trendTypeTitle = trendType.name.toTitleCase()
+        val trendTypeTitle = trendType.name.lowercase()
         embed
             .setTitle("A new trending $trendTypeTitle has been detected!")
             .setDescription("A new trending $trendTypeTitle has been detected on ${ConfigManager.getInstance().getConfig().instanceName}! " +
@@ -29,7 +28,7 @@ fun postTrendToDiscord(trend: Trend, plugin: Plugin) {
             .addField("Uses Today", trend.history[0].uses.toString(), true)
     } else if(trend is TrendLink) {
         trendType = TrendType.LINK
-        val trendTypeTitle = trendType.name.toTitleCase()
+        val trendTypeTitle = trendType.name.lowercase()
 
         embed
             .setTitle("A new trending $trendTypeTitle has been detected!")
@@ -90,7 +89,11 @@ private fun createUpdatedTrendEmbed(trend: Trend, type: TrendType, status: Trend
     val embed = EmbedBuilder()
 
     embed.setTitle(title)
-    embed.setDescription("A trending ${type.name.toTitleCase()} has been ${status.name.lowercase()}!")
+    var desc = """
+        A trending ${type.name.lowercase()} has been ${status.name.lowercase()}!
+         You can find the original link [here](${trend.url}).
+    """.trimIndent()
+    embed.setDescription(desc)
 
     when (status) {
         TrendApprovalStatus.APPROVED -> {
@@ -106,10 +109,11 @@ private fun createUpdatedTrendEmbed(trend: Trend, type: TrendType, status: Trend
         embed.addField("Tag Name", trend.name, false)
     } else if(trend is TrendLink) {
         embed.addField("Link Title", trend.title, false)
+        embed.setImage(trend.image)
     }
 
     embed.addField(actorTagline, actor, true)
-    embed.addField("Status", status.name.toTitleCase(), true)
+    embed.addField("Status", status.name.lowercase(), true)
 
     return embed
 }
